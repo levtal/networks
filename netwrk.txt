@@ -1,0 +1,12 @@
+
+find your ip    http://www.whatismyip.com   
+pind any url ip  in cmd : ping www.facebook.com 
+another way: nslookup www.google.com    
+
+GeoIP: http://www.geoiptool.com 
+
+trace the routh to :  tracert -d www.google.com
+visual traceroute:   https://www.yougetsignal.com/tools/visual-tracert/   use proxy trace
+  
+ page פרק 2 - תכנות ב  27
+ 
