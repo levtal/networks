@@ -1,8 +1,9 @@
 import time
 import random
 import socket
-
-__author__ = 'jacobshutzman1'
+import sys
+currentVersion = sys.version_info
+pyVer = currentVersion[0]
 
 """ This is the server portion of the socket. The protocol specifies
     that it receives te first message as a 'hand-shake', to which it
@@ -45,15 +46,18 @@ def inital_listen():
 
 def check_client(server):
     client, (ip, port) = server.accept()
-
     data = client.recv(MESSAGE_SIZE)
     first_response = 'Your options are: TIME, RAND(1-10), NAME or EXIT'
-    client.send(first_response)
+    if pyVer >=3:
+        client.send(first_response.encode())
+    else:
+        client.send(first_response)
     '''
     The client is responsible for sending only 4 bytes. We could let it
     send more and indicate back invalid data (see Bad data... message)
     '''
-    data = client.recv(MESSAGE_SIZE)
+    data = client.recv(MESSAGE_SIZE).decode()
+    print ('server = ', str(data ))
     return client, data
 
 
@@ -61,6 +65,7 @@ def serve_requests(data, client, server):
     """ Serve requests by the client, as long as they come """
 
     while True:
+        print ('start serve',data)
         if data == 'TIME':
             response = time.ctime()[START_HOUR:END_SEC]
         elif data == 'RAND':
@@ -71,6 +76,7 @@ def serve_requests(data, client, server):
             break
         else:
             response = 'Bad data, only: TIME, RAND, NAME or EXIT are allowed'
+        print ('response',response)
         message_back = format_response(response)
         client.send(message_back)
         data = client.recv(MESSAGE_SIZE)
@@ -87,10 +93,15 @@ def main():
     server = inital_listen()
 
     while True:
+
         client, data = check_client(server)
+        print ('try 0')
         try:
+            print ('try start')
             serve_requests(data, client, server)
+            print ('try server')
         except:
+            print ('client.close()')
             client.close()
     server.close()
 
