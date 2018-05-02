@@ -9,7 +9,7 @@ run: python  echo_server_stream.pyc
 '''
 my_socket = socket.socket()
 my_socket.connect(('127.0.0.1', 8820))
-cmd = input("Your command? ")
+cmd = raw_input("Your command? ")
 #msg = "Hell"
 my_socket.send(cmd.encode())
 
