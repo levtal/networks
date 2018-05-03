@@ -46,6 +46,7 @@ def send_requests(res, client_socket):
         client_socket.send(message)
         # First four bytes contain the message we receive, has the length
         result = client_socket.recv(MESSAGE_SIZE)
+        print(result)
         if result:
             message_length = int(result)
             result = client_socket.recv(message_length)

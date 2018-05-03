@@ -2,7 +2,6 @@ import time
 import random
 import socket
 
-__author__ = 'jacobshutzman1'
 
 """ This is the server portion of the socket. The protocol specifies
     that it receives te first message as a 'hand-shake', to which it
@@ -27,11 +26,22 @@ RAND_HIGH = 10
 def format_response(response):
     """ The first 4 bytes of the response is its length. so the client
         knows how  many bytes are left for the request.
+        Called from:  'serve_requests'
+        The returned string
+                           NAME:  0020My name is: HAL 9000  length is 20
+                           RAND:  00018 len is 1 and rand number is 8
+                           TIME:  000821:31:43  length is 8
+
     """
+
     m_length = str(len(response))
+
     m_length = m_length.zfill(MESSAGE_SIZE)
+
     message_back = m_length + response
+
     return message_back
+
 
 
 def inital_listen():
