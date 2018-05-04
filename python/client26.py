@@ -29,7 +29,7 @@ def initial_contact(ip, port):
     message = "Hi"
     client_socket.send(message)
     result = client_socket.recv(FIRST_MESSAGE_LENGTH)
-    print result
+    print (result)
     return True, result, client_socket
 
 
@@ -50,7 +50,7 @@ def send_requests(res, client_socket):
         if result:
             message_length = int(result)
             result = client_socket.recv(message_length)
-            print result
+            print (result)
         else:
             result = ''
     client_socket.close()
