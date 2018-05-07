@@ -1,0 +1,61 @@
+hack the box
+join
+Use Addon HTTP  Request maker to send  POST
+ Send “POST” to:
+ https://www.hackthebox.eu/api/invite/how/to/generate 
+ And the Data field is:  DataType: "json"
+(ctrl+shift+Y)
+ Once the post has been sent, the data comes ”
+ 
+{'success':1,
+ 'data':{'data':'SW4gb3JkZXIgdG8gZ2VuZXJhdGUgdGhlIGludml0ZSBjb2RlLCBtYWtlIGEgUE9TVCByZXF1ZXN0IHRvIC9hcGkvaW52aXRlL2dlbmVyYXRl','enctype':'BASE64'},
+ '0':200} 
+ 
+ Decode this data (via https://www.base64decode.org/
+ The result is 
+   In order to generate the invite code, make a POST request
+   to https://www.hackthebox.eu/api/invite/generate
+   
+   with the Data field is:  DataType: "json"
+   
+   The response is 
+   {
+    'success':1,
+    'data':
+	     {
+		  'code':'WVZSVlotSkVaUEgtUEdJQkgtTVdPTEQtQ0dRVks=',
+		  'format':'encoded'
+		  },
+    '0':200
+	}
+ Decode the "code" field and put the result:
+   UJSJY-WNVJN-YVCIF-AHAJH-ARXSF 
+ 
+ in the invade code  field.   
+ 
+ 
+ Connection to HTB is initiated with openVPN.
+
+After registrating 
+Download openvpn from:
+    https://openvpn.net/index.php/open-source/downloads.html
+Download  the connection pack from 
+
+
+here you have all the settings pre-configured and the only thing you need is to have openVPN client installed in your system.
+
+Connection should be performed by command line.
+ Browse to the folder you extracted the files and type 
+ openvpn zamberg.ovpn.
+
+Attention: IPv6 support is required for the vpn to work. Also, in some OSes, the command prompt must be run as Administrator/root otherwise the connection will complete but it will fail to install the required routes to communicate with the machines.
+Alternative TCP Connection
+
+In case your firewall/country is restrictive and does not allow UDP/1337, by changing the following two lines in your .ovpn file you can connect using TCP/443
+proto udp > proto tcp
+remote <server>.hackthebox.eu 1337 > remote <server>.hackthebox.eu 443
+Tickets
+
+Below is a list of your active tickets. Each ticket allows access to a specific lab or lab group.
+
+Warning: Each time you "Switch" your keys are regenerated so a fresh download of your connection pack is required.
