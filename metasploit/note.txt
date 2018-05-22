@@ -1,0 +1,9 @@
+ 
+  
+
+ 
+https://localhost:4444/users/new
+ 
+C:\metasploit\apps\pro\data\*     
+ 
+https://www.tutorialspoint.com/metasploit/metasploit_armitage_gui.htm
