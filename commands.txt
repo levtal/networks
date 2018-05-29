@@ -1,0 +1,18 @@
+  
+ DemmSec 
+ https://www.youtube.com/user/DemmSec/playlists
+ 
+ route -n it will show you your IP address and interface  (linux)
+ route print  (win)
+ 
+
+ nmap 192.168.43.1    scan single IP address
+ nmap 192.168.43.0/24   or  nmap 192.168.43.*  scan whole network type
+ nmap flags:
+        -O  :-  O.S detection.
+        -sS :-  TCP SYN scan
+        -P0 :-  Ports detection.
+        -T5 :-  Fast Scanning.
+
+
+ 
