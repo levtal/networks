@@ -1,0 +1,17 @@
+http://overthewire.org/wargames/bandit/bandit2.html 
+https://jonbornsteinblog.wordpress.com/2017/09/01/overthewire-bandit-levels-0-10/
+
+0 →  1   
+user = bandit0
+ssh -l bandit0 bandit.labs.overthewire.org -p 2220
+  (password = bandit0 )     
+
+once login   'ls' showes one file:  readme
+the password written  in this file is: boJ9jbbUNNfktd78OOpsqOltutMc3MY1  
+
+1 →  2 
+exit
+run:  ssh -l bandit1 bandit.labs.overthewire.org -p 2220
+   (user = bandit1) 
+   (password = boJ9jbbUNNfktd78OOpsqOltutMc3MY1 )
+   
