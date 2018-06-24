@@ -67,3 +67,51 @@ drwxr-xr-x 3 root    root    4096 Dec 28 14:34 ..
 
  run:cat ./-file*
 ** a bunch of non human readable text was dissplayed, but within all of the content was the password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+5  
+ http://overthewire.org/wargames/bandit/bandit6.html
+   The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+    human-readable
+    1033 bytes in size
+    not executable
+
+exit
+run:  ssh -l bandit5 bandit.labs.overthewire.org -p 2220
+   (user = bandit5) 
+   (password = koReBOKuIDDepwhWk7jZC0RTdopnAYKh ) 
+result: 'inhere'   directotes 'maybehere**'
+we need to find file of size 1033 
+run: find . -size 1033c
+result: ./maybehere07/.file2
+run: cat ./maybehere07/.file2
+result: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+6
+http://overthewire.org/wargames/bandit/bandit7.html
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+    owned by user bandit7
+    owned by group bandit6
+    33 bytes in size
+
+exit
+run:  ssh -l bandit6 bandit.labs.overthewire.org -p 2220
+   (user = bandit6) 
+   (password = DXjZPULLxYr17uwoI01bNLQbtFemEgo7 ) 
+ ls -la empty dir
+ cd ..
+ ls -la many dir
+ run find / -size 33c -group bandit6 -user bandit7  
+ results: many dir with premission denied
+   the  only file  with  premission is /var/lib/dpkg/info/bandit7.password
+ run :   cat /var/lib/dpkg/info/bandit7.password
+ the  result is  HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+7
+http://overthewire.org/wargames/bandit/bandit8.html
+
+exit
+run:  ssh -l bandit7 bandit.labs.overthewire.org -p 2220
+   (user = bandit7) 
+   (password = HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs ) 
