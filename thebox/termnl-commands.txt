@@ -1,0 +1,25 @@
+ 
+
+ssh
+ssh -l bandit1 bandit.labs.overthewire.org -p 2220
+
+
+cat
+cat ./-
+      You must add ./ because, when cat sees the string – as a filename, it treats it as a synonym for stdin, so it won't open the file.
+cat spaces\ in\ this\ filename   
+cat ./.hidden
+cat ./-file* : Display all file starts with '-file*''
+ 
+find 
+find . -size 1033c 
+find / -size 33c -group bandit6 -user bandit7  
+ 
+grep : searching plain-text data sets for lines that match a regular expression.
+cat data.txt | grep millionth
+grep '==' filename -a: ‘-a’ flag process a binary file as if it were text
+
+sort  
+sort data.txt| uniq -cu: only diffrent passwords
+ 
+ 
