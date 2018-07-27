@@ -1,0 +1,156 @@
+http://overthewire.org/wargames/bandit/bandit2.html 
+https://jonbornsteinblog.wordpress.com/2017/09/05/overthewire-bandit-levels-10-20/
+ 
+
+
+9
+http://overthewire.org/wargames/bandit/bandit10.html 
+The password for the next level is stored in the file data.txt in one of the few 
+human-readable strings, beginning with several ‘=’ characters.
+run:  ssh -l bandit9 bandit.labs.overthewire.org -p 2220
+
+   (user = bandit9) 
+   (password = UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR ) 
+run ls -la
+result:one file  data.txt
+run: grep '==' data.txt -a
+result: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk  appears in the  output 
+
+grep= utility for searching plain-text data sets for lines that match a regular expression.
+Using the ‘-a’ flag process a binary file as if it were text.   
+
+
+10
+http://overthewire.org/wargames/bandit/bandit11.html
+he password for the next level is stored in the file data.txt, which 
+contains base64 encoded data
+
+ ssh -l bandit10 bandit.labs.overthewire.org -p 2220
+ (user = bandit10) 
+   (password = truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk ) 
+run: cat data.txt 
+result: VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==  
+run: echo VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg== | base64 --decode
+result: The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+11
+http://overthewire.org/wargames/bandit/bandit12.html
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) 
+and uppercase (A-Z) letters have been rotated by 13 positions
+
+ssh -l bandit11 bandit.labs.overthewire.org -p 2220
+(user = bandit11) 
+(password = IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR   ) 
+
+run: cat data.txt
+result:Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+  
+run: echo "Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh" | tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
+ tr - translate or delete characters
+The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+12  home/bandit12/data.txt
+http://overthewire.org/wargames/bandit/bandit13.html
+
+ssh -l bandit12 bandit.labs.overthewire.org -p 2220
+(user = bandit12) 
+(password = 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu   ) 
+
+data.txt is a hexdump of a file that has been repeatedly compressed.
+
+Then copy the datafile using cp, and rename it using mv 
+
+So, data.txt is a hexdump. How do you read a hexdump, or make sense of it? 
+Well, one of the commands this level suggests might be useful is xxd;
+xxd 
+a command that can create a hexdump of a given file or convert a hex dump back to its original 
+binary form. In this case, we want to revert it (-r).
+
+mkdir /tmp/myname123 # this dir exists with the data.txt hex viersion
+cd /home/bandit12/
+cp /home/bandit12/data.txt  /tmp/myname123/data11.txt/ 
+cd /tmp/myname123
+xxd -r data.txt data2.txt # Revert data.txt and store on data2.txt
+
+Now that the hexdump is in binary form, we can find out more about it using the file command.
+
+run: test$ file data2.
+result:data2.txt: gzip compressed data, was "data2.bin", 
+       last modified: Thu Dec 28 13:34:36 2017, max compression, from Unix
+We see that the file was compressed using gzip. 
+In order to decompress the file, it will also need to be renamed.
+
+run:cp data2.txt data2.gz
+    gzip -d data2.gz
+	dir
+result:New file   data2 (no  extension)
+Like before, we want to see how the file was compressed.
+run:file data2
+result: data2: bzip2 compressed data, block size = 900k
+
+
+And again, will need to rename the file and unzip it.
+run: cp data2 data.bz2
+     bzip2 -d data.bz2
+     ls: A new file named 'data' file data.bz2 will dissapear
+run: file data
+result:file data
+data: gzip compressed data, was "data4.bin",
+ last modified: Thu Dec 28 13:34:36 2017, max compression, from Unix
+
+again we need to  decompress 
+run: cp data data4.gz
+     gzip -d data4.gz
+     ls: A new file named 'data4'  
+	 
+file data4	
+result: POSIX tar archive (GNU) 
+run: cp data4 data4.tar
+
+we need to  repeat this process 8 decompressing according to the
+compress type until the   last time we will have a file
+of which 'file name of file' process result is ' ASCII text' time 
+The cat data8 will  display the password: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+
+13  home/bandit13/data.txt
+http://overthewire.org/wargames/bandit/bandit14.html
+
+ssh -l bandit13 bandit.labs.overthewire.org -p 2220
+(user = bandit13) 
+(password = 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL   ) 
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read 
+by user bandit14. 
+For this level, you don’t get the next password, but you get a private SSH key that can be 
+used to log into the next level.
+Note: localhost is a hostname that refers to the machine you are working on
+
+
+run: ls
+result: sshkey.private # This is the private SSH key  
+ Since we must login as bandit14 using this private key. Checking ssh man page will find that
+ to use the key, we need to  use the identify file option (-i).
+run:  ssh -i sshkey.private bandit14@localhost
+Once we login as bandit14, all need to do is look at the content of the file it mentioned to find
+ the password for the next level.
+ run:cat /etc/bandit_pass/bandit14
+result: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+14 
+ssh -l bandit14 bandit.labs.overthewire.org -p  2220
+(password = 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e   ) 
+-P <password>
+The password for the next level can be retrieved by submitting the password of the current level
+to port 30000 on localhost.
+
+
+ run:telnet localhost 30000
+ result:Trying 127.0.0.1...
+        Connected to localhost.
+        Escape character is '^]'.
+ Type this level password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+ result:Correct!
+        BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+Connection closed by foreign host.
+ 

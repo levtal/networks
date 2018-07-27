@@ -1,8 +1,24 @@
 http://overthewire.org/wargames/bandit/bandit2.html 
 https://jonbornsteinblog.wordpress.com/2017/09/01/overthewire-bandit-levels-0-10/
 
+The basic tool for this game  is SSH(Secure Shell)
+Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over
+an unsecured network
+
 0 →  1   
+re: Bandit (levels 0-9)
+
+About ‘Over The Wire: Bandit’: http://overthewire.org/wargames/bandit/
+
+Bandit Level 0
+Level Goal
+The goal of this level is for you to log into the game using SSH. The host to which
+ you need to connect is bandit.labs.overthewire.org, on port 2220. 
+ The username is bandit0 and the password is bandit0.
+  
+
 user = bandit0
+run(from command line):
 ssh -l bandit0 bandit.labs.overthewire.org -p 2220
   (password = bandit0 )     
 
@@ -10,23 +26,26 @@ once login   'ls' showes one file:  readme
 the password written  in this file is: boJ9jbbUNNfktd78OOpsqOltutMc3MY1  
 
 1 →  2 
+The password for the next level is stored in a file called - located in the home directory
 exit
 run:  ssh -l bandit1 bandit.labs.overthewire.org -p 2220
    (user = bandit1) 
    (password = boJ9jbbUNNfktd78OOpsqOltutMc3MY1 )
    ls result is one file named: '-'
    run: cat ./-
-      You must add ./ because, when cat sees the string – as a filename, it treats it as a synonym for stdin, so it won't open the file.
+      You must add ./ because, when cat sees the string – as a filename, it treats it as a synonym for 
+	  stdin, so it won't open the file.
    CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 
    
 
-2  
+ 2 → 3
 exit
 run:  ssh -l bandit2 bandit.labs.overthewire.org -p 2220
    (user = bandit2) 
    (password = CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9 )
    ls result is one file, named: 'spaces in this filename'   
+   The problem is that there are  spaces in this file name
    run: cat spaces\ in\ this\ filename
    result = UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 

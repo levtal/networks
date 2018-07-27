@@ -1,7 +1,10 @@
  
 
-ssh
-ssh -l bandit1 bandit.labs.overthewire.org -p 2220
+base64
+  Revert dat that contains base64 encoded data
+ echo VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg== | base64 --decode
+ result:The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
 
 
 cat
@@ -14,12 +17,39 @@ cat ./-file* : Display all file starts with '-file*''
 find 
 find . -size 1033c 
 find / -size 33c -group bandit6 -user bandit7  
- 
+
+
+file
+file 'name of file': find details  on file 
 grep : searching plain-text data sets for lines that match a regular expression.
 cat data.txt | grep millionth
 grep '==' filename -a: ‘-a’ flag process a binary file as if it were text
 
+nmap
+nmap url -p31000-32000 # Scan ports 31000-32000
+nmap -v -A -T4 -p 31000-32000 url #Scan ports 31000-32000 and find the services
+
+openssl
+echo 'password' | openssl s_client -quiet -connect url:port
+
 sort  
-sort data.txt| uniq -cu: only diffrent passwords
+sort data.txt| uniq -cu: only diffrent lines
+
+ssh
+ssh -l bandit1 bandit.labs.overthewire.org -p 2220
+
+
+tr: translate or delete characters
+echo "Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh" | tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
+
+
+xxd - make a hexdump or do the reverse.
+xxd -r data.txt data2.txt # Revert data.txt and store on data2.txt
  
  
+compress
+bzip2 -d data.bz2    #bzip2 
+gzip -d data4.gz     #" .bin", from Unix,
+tar -xvf data4.tar   #POSIX tar archive (GNU) 
+ 
+  
