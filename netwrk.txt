@@ -1,6 +1,6 @@
 
 find your ip    http://www.whatismyip.com   
-pind any url ip  in cmd : ping www.facebook.com 
+ping any url ip  in cmd : ping www.facebook.com 
 another way: nslookup www.google.com    
 
 GeoIP: http://www.geoiptool.com 
