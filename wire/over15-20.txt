@@ -2,18 +2,20 @@ http://overthewire.org/wargames/bandit/bandit16.html
 https://jonbornsteinblog.wordpress.com/2017/09/05/overthewire-bandit-levels-10-20/
  
 
-SSL (Secure Sockets Layer) is the standard security technology for establishing an encrypted link 
-between a web server and a browser. 
-This link ensures that all data passed between the web server and browsers remain private and integral.
+SSL (Secure Sockets Layer) is the standard security technology for 
+establishing an encrypted link between a web server and a browser. 
+This link ensures that all data passed between the web server and 
+browsers remain private and integral.
 
 openssl - OpenSSL command line tool 
-OpenSSL is a cryptography toolkit implementing the Secure Sockets Layer, which is exactly what
- we need from the goal given
+OpenSSL is a cryptography toolkit implementing the Secure Sockets Layer, 
+which is exactly what  we need from the goal given
 
 ssl is not a command, it is a type of connection. 
- If we scroll to the bottom of the man ssl page we can see that the info shown appeared in Openssl.
- To verify that ssl is not what we want go ahead and try to echo the password and pipe it to ssl with
- localhost 30001
+ If we scroll to the bottom of the man ssl page we can see that the info 
+ shown appeared in Openssl.
+ To verify that ssl is not what we want go ahead and try to echo the
+ password and pipe it to ssl with  localhost 30001
   
 15   Submitting a password to a port using SSL encryption.
 Level 15 → Level 16
@@ -23,16 +25,18 @@ Level 15 → Level 16
 
 
 	
-The password for the next level can be retrieved by submitting the password of the 
-current level to port 30001 on localhost using SSL encryption.
+The password for the next level can be retrieved by submitting the
+ password of the  current level to port 30001 on localhost using SSL encryption.
 
 Helpful note: 
-  Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS”
-  section in the manpage.
-  Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command… 	
+  Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the
+  “CONNECTED COMMANDS”  section in the manpage.
+  Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of 
+  that command… 	
 
   
-The misson here is to find one command to sand password with ssl encryption   
+The misson here is to find one command to sand password with ssl 
+encryption   
   
 run:	openssl s_client -connect localhost:30001 -ign_eof
         enter the  password BfMYroe26WYalil77FoDi9qh59eK5xNr
@@ -59,11 +63,13 @@ Bandit Level 16 → Level 17
 Level Goal
 https://home.adelphi.edu/~ni21347/cybersecgames/OverTheWire/Bandit/index.html
 http://codebluedev.blogspot.com/2015/07/overthewire-bandit-cheat-sheet.html
-The credentials for the next level can be retrieved by submitting the password of the current level
-to a port on localhost in the range 31000 to 32000. 
+The credentials for the next level can be retrieved by submitting the 
+password of the current level to a port on localhost in the 
+range 31000 to 32000. 
 First find out which of these ports have a server listening on them. 
-Then find out which of those speak SSL and which don’t. There is only 1 server that will give the
- next credentials, the others will simply send back to you whatever you send to it.
+Then find out which of those speak SSL and which don’t. 
+There is only 1 server that will give the  next credentials, the 
+others will simply send back to you whatever you send to it.
  	
 ssh -l bandit16 bandit.labs.overthewire.org -p 2220
     password = cluFn7wTiGryunymYOu4RcffSxQluehd   ) 
@@ -94,7 +100,8 @@ PORT      STATE SERVICE     VERSION
 31790/tcp open  ssl/unknown 
 31960/tcp open  echo
 
-There are two ssl services but one is echo so it is not the one  we  are looking.
+There are two ssl services but one is echo so it is not the one  we 
+ are looking.
 so the only one  that left is 31790
 run:  openssl s_client -connect localhost:31790 
 enter: paswword  'cluFn7wTiGryunymYOu4RcffSxQluehd'
@@ -108,6 +115,9 @@ $ ssh -i ./sshkey.private bandit17@localhost
 
 
 
+xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+
+
 
 
 	ssh commands
@@ -117,33 +127,76 @@ So try this key sequence:
 Return
 
 ~
+Level 17 → Level 18
 
-Control-z
+
+ssh -l bandit17 bandit.labs.overthewire.org -p 2220
+    password = xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn   ) 
+	
+There are 2 files in the homedirectory: 
+        passwords.old and passwords.new. 
+The password for the next level is in passwords.new and is the only 
+line that has been changed between passwords.old and passwords.new
 
 
-MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
-imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
-Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
-DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
-JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
-x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
-KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
-J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
-d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
-YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
-vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
-+TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
-8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
-SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
-HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
-SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
-R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
-Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
-R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
-L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
-blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
-YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
-77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
-dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
-vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+run : diff passwords.new passwords.old
+result:
+42c42
+< kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+---
+> 6vcSC74ROI95NqkKaeEC2ABVMDX9TyUr
 
+
+NOTE: if you have solved this level and see ‘Byebye!’ when trying to 
+log into bandit18, this is related to the next level, bandit19
+ 
+Level 18 → Level 19 
+	
+ssh -l bandit18 bandit.labs.overthewire.org -p 2220
+ password = kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd   )	
+ 
+The password for the next level is stored in a file readme in the
+ homedirectory. 
+Unfortunately, someone  has modified .bashrc to log you out when you 
+log in with SSH. 
+Entering the password above produces the ‘Byebye !’ message noted 
+in the previous level, which also logs you out, explained in this level.
+
+However, apparently you can sneak in commands while trying to connect 
+via SSH.
+run:   ssh -l bandit18 bandit.labs.overthewire.org -p 2220 cat readme
+       enter the password kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+result 	   IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+Level 19 → Level 20	  
+
+ssh -l bandit19 bandit.labs.overthewire.org -p 2220
+ password = IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+To gain access to the next level, you should use the setuid binary in 
+the homedirectory.
+ Execute it without arguments to find out how to use it. 
+ The password for this level can be found in the usual 
+ place (/etc/bandit_pass), after you have used the setuid binary. 
+
+run:  ./bandit20-do
+result: ' Run a command as another user.
+  Example: ./bandit20-do id'
+run   ./bandit20-do id
+result:
+uid=11019(bandit19) gid=11019(bandit19) euid=11020(bandit20)
+groups=11019(bandit19)
+
+run:./bandit20-do whoami  
+result :bandit20 #So now I am  using bandit 20 previlage
+
+
+run:./bandit20-do cat /etc/bandit_pass/bandit20
+result: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+
+When an executable file has been given the setuid attribute, 
+normal users on the system who have permission to execute this file
+gain the privileges of the user who owns the file (commonly root)
+within the created process.

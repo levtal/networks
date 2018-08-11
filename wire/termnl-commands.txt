@@ -39,7 +39,8 @@ sort data.txt| uniq -cu: only diffrent lines
 ssh    # Secure Shell
 ssh -l bandit1 bandit.labs.overthewire.org -p 2220
 
-
+setuid  set user ID  upon executionand 
+setgid  set group ID upon executionand
 tr: translate or delete characters
 echo "Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh" | tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
 
