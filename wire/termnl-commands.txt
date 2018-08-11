@@ -9,13 +9,14 @@ base64
 
 cat
 cat ./-
-      You must add ./ because, when cat sees the string – as a filename, it treats it as a synonym for stdin, so it won't open the file.
-cat spaces\ in\ this\ filename   
+      You must add ./ because, when cat sees the string – as a filename,
+ 	  it treats it as a synonym for stdin, so it won't open the file.
+cat  spaces\ in\ this\ filename   # '\ ' means space
 cat ./.hidden
 cat ./-file* : Display all file starts with '-file*''
  
 find 
-find . -size 1033c 
+find . -size 1033c  #Fnd  file of size 1033 
 find / -size 33c -group bandit6 -user bandit7  
 
 
@@ -35,7 +36,7 @@ echo 'password' | openssl s_client -quiet -connect url:port
 sort  
 sort data.txt| uniq -cu: only diffrent lines
 
-ssh
+ssh    # Secure Shell
 ssh -l bandit1 bandit.labs.overthewire.org -p 2220
 
 
@@ -48,8 +49,8 @@ xxd -r data.txt data2.txt # Revert data.txt and store on data2.txt
  
  
 compress
-bzip2 -d data.bz2    #bzip2 
-gzip -d data4.gz     #" .bin", from Unix,
+bzip2 -d data.bz2    #unzip bzip2 
+gzip -d data4.gz     #unzip .bin", from Unix,
 tar -xvf data4.tar   #POSIX tar archive (GNU) 
  
   
