@@ -1,0 +1,213 @@
+. Basics
+	File -> User Preferences -> Input -> Emulate 3 Button Mouse
+	A. Ctrl + Middle Wheel : Zoom in and Out
+	B. Shift + Middle Wheel : Scroll Screen
+	C. Middle Mouse Button : Pan Objects
+	D. RMB : Select Object 
+		1. Shift + RMB : Select Multiple Objects
+	
+	E. Tab : Switch between Object and Edit mode
+		1. Object Mode : Move Objects around
+		2. Edit Mode : Change the vertices, edges and faces
+	
+	F. g : Allows you to move selected object
+		1. Then x : Moves only on X plan
+		2. Then y : Moves only on Y plan
+		3. Then z : Moves only on Z plan
+		4. g+5 : Move 5 Blender units
+		
+	G. Grid
+		1. X Axis : Red Line
+		2. Y Axis : Green line
+		3. Z Axis : Above & Below Grid
+		
+	H. Change View
+		File -> User Preferences -> Input -> Check Emulate Numpad
+		1. 1 : Front View
+		2. 3 : Right View
+		3. 7 : Top View
+		4. Ctrl + 1 : Back View
+		5. Ctrl + 3 : Left View
+		6. Ctrl + 7 : Bottom View
+		7. 0 : Camera View
+			a. RMB on Edge : Move the Camera
+			
+		8. 5 : Perspective View
+		9. Dragging from bottom left of view creates horizontal view
+		10. Dragging from the top right creates a vertical view
+		11. Click and drag left or right to collapse views
+		12. Ctrl + Alt + q : Show Quad View
+		13. Shift + f : Pan the Window (LMB to Deactivate)
+		
+	I. n : Show / Hide object properties
+	
+	J. t : Show / Hide object tools
+	
+	K. 3D Manipulator 
+		1. Object Mode : Moves the shape
+		2. Edit Mode : Edits vertices
+		3. Operations
+			a. Move, Rotate, or Scale
+			b. RMB : Manipulate Object
+			c. LMB : Deactivate manipulating Object
+			
+	L. 3D Cursor (Set w/ LMB) : Determines where new objects will spawn
+		1. * Always add objects in Object Mode, or they will be joined with other objects
+		
+		2. Shift + d : Duplicate Selected Object
+	
+	M. z : Switch between Wireframe & Solid Shading
+	
+	N. Shift + z : Show Rendered Scene
+	
+	O. Outliner Window
+		1. Everything in the scene and how they relate
+		2. Cube
+			a. Cube Object
+			b. Cube Mesh
+			c. Cube Material / Color
+			d. Cube Texture
+			e. Cube Visible
+			f. Cube Selectable
+			g. Cube Render Disable
+		3. You can rename objects
+		
+II. Object Mode 
+ 
+	A. Shift + a : Add Object
+		1. Some options will only be available immediately after creating an object
+		
+	B. x : Delete Selected Object, vertice, edge, face
+	
+	C. s : Scale selected object
+		1. Then x, y or z : Scale only on those axis
+		2. s+2 : Double in Size
+	
+	D. r : Rotate selected object
+		1. Then x, y or z : Rotate only on those axis
+		2. r+20 : Rotate 20 degrees
+	
+	E. h : Hide selected object
+	
+	F. Alt + h : Show hidden object
+	
+	G. Right Click Light to move it
+	
+	H. Shading 
+		1. Smooth smoothes the faces
+		2. Flat shows the faces
+		
+	I. Group Objects
+	
+		1. Select objects click Object Icon in Properties
+		2. Under Group tab click + next to Add to Group and give it a name
+		3. To add an object to a group select object and click Add to Group and select group name
+		
+	J. Select Multiple + Ctrl + j : Joins multiple objects
+	
+	K. Separate 2 Objects
+	
+		1. (In Object Mode) Draw Sphere into a Cube
+		2. Select and Ctrl + j to Join them
+		3. Tab for Edit Mode
+		4. b for box select of cube & sphere
+		5. p to Separate and click Loose Parts
+		6. Tab for Object Mode
+		7. Select sphere and drag apart
+	
+	L. Separate a Selection
+	
+		1. (In Object Mode) Draw Sphere into a Cube
+		2. Select and Ctrl + j to Join them
+		3. Tab for Edit Mode
+		4. b for box select of part of sphere
+		5. p to Separate and click Selection
+		6. Tab for Object Mode
+		7. g to move the separated sphere
+		
+	M. Separate By Material separates based on object color
+		
+III. Edit Mode
+ 
+	A. Tab : Enter Edit Mode
+	
+	B. The dots on the mesh are called vertices
+	
+	C. Lines between vertices are called Edges
+	
+	D. The square inside of 4 edges is called a face
+	
+	E. In Bottom Bar
+		1. Vertex Select : Only Selects Vertices
+		2. Edge Select : Only Selects Edges
+		3. Face Select : Only Selects Faces 
+	
+	F. a : Deselect / Select All
+	
+	G. b : Box Select by dragging to Select multiples
+		1. b + Shift : Deselect some of selection
+		
+	H. c : Circle Select by dragging
+		1. c + Shift : Deselect some of selection
+		
+	J. Use Limit Selection to Visible Button to select through the object
+	
+	K. z : Change between Wireframe & Solid Mode
+	
+	L. g : Move Selected part of Object
+	
+	M. s & r : Scale and Rotate Selection
+		1. b : Box Select
+		2. s : Scale
+		3. g : Drag mouse to proper size
+		
+	N. Draw vertices and create faces
+	
+		1. In Edit mode press a to Deselect
+		2. 5 + 1 : Front Orth View
+		3. Ctrl + LMB : Create 3 vertices
+		4. b Box Select all 3 vertices
+		5. f : Create Face
+		
+	N. Tool Shelf Panel
+	
+		1. Extrude (e) : Scale selection out
+		
+		2. Extrude Individual : Extrude Vertice, Edge, or Face
+		
+		3. Inset Faces (i) : Takes Selected Faces and insets them with the rest of the object
+			a. Create cube and use Subdivide to create more faces
+			b. Select 4 Faces on each of 3 sides
+			c. i, then hold Ctrl and drag mouse to create inset
+			
+		4. Make Edge/Face (f) : Select multiple vertices and click f to create an edge or face using vertices
+		
+		5. Subdivide : Create a vertice in middle of edge
+		
+		6. Loop Cut and Slide (Ctrl + r) : Create row of vertices around a shape
+			a. Select vertice
+			b. Ctrl + r 
+			c. LMB and drag mouse to position the loop and LMB to set
+		
+		7. Offset Edge Slide (Ctrl + Shift + r) : Creates a draggable duplication of an edge
+		
+		8. Duplicate (Shift + d) : Duplicates selection
+		
+		9. Spin (Alt + r) : Spins a shape around a central point. 
+			a. Spin & Bezier
+			
+			b. Object Mode -> n -> 1 5 Front Ortho -> Add Image -> Wine Glass
+			
+			c. In Object Mode Shift + a Create Bezier -> r x +90
+			
+			d. Edit Mode -> Draw Bezier on wine glass edge
+			
+			e. Object Mode -> Select All -> Alt + c -> Mesh from Curve
+			
+			e. Edit Mode -> e : Extrude curve -> Top View 7
+			
+			f. Edit Mode -> Mesh -> Snap -> Cursor to Center
+			
+			f. Edit Mode : Spin 360 degrees
+			
+			e. Select All w -> Remove Doubles
