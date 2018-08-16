@@ -4,7 +4,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print(s)
 server = 'maps.google.com'
    
-port = 80
+port  =  80
 
 server_ip = socket.gethostbyname(server)
 print(server_ip)
