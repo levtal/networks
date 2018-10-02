@@ -26,6 +26,6 @@ IP ranges are reserved for private subnets
 10.*.*.*, 
 172.16–31.*.*, 
 192.168.*.*:
-These addresses are free to use on any internal networks 
-and free to assign IP addresses internally, but whose hosts do not need to be
+These addresses are free for you to use on any of your organization’s internal networks where you want to
+be free to assign IP addresses internally, but whose hosts do not need to be
 accessible from other places on the Internet.
