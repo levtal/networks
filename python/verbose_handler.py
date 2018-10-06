@@ -9,6 +9,7 @@
 # from verbose_http import VerboseHTTPHandler
 #  import urllib, urllib2
 #  opener = urllib2.build_opener(VerboseHTTPHandler
+#  opener.open('http://www.ietf.org/rfc/rfc2616.txt')
 import StringIO, httplib, urllib2
 
 
