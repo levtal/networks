@@ -1,0 +1,28 @@
+ http://challenges.enigmagroup.org/ 
+Basic 2 
+The page contant is 
+
+fopen: could not open file '/www/htdocs/challenges/basics/pre/2/dontlookinhere/password.txt';
+FYI, the mission isn't broken, the above error is part of the mission. 
+
+Solution: 
+1. open http://challenges.enigmagroup.org/basics/pre/2/dontlookinhere/password.inc
+   The content is admin:rosebud101z   
+2. input the data    
+
+Basic 3
+The tip is : Robots
+robots.txt files indicate whether certain user agents (web-crawling software) 
+can or cannot crawl parts of a website.  
+Solution
+1. Open http://challenges.enigmagroup.org/basics/pre/3/robots.txt
+    The content is :
+	   User-agent:	*
+       Disallow:       /f0rk/
+	So this dir is not allowed   
+2. Open http://challenges.enigmagroup.org/basics/pre/3/f0rk/	   
+	 The  Index of /basics/pre/3/f0rk is:
+	 [ ]	config.inc	27-May-2016 22:26 	45 	 
+3. Open 	config.inc 
+    $username = "admin"; 
+    $password = "f0rkblork"; 
