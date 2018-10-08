@@ -1,4 +1,5 @@
  http://challenges.enigmagroup.org/ 
+ https://cryptocult.wordpress.com/cyber-challenges/enigma-group-solutions/
 Basic 2 
 The page contant is 
 
@@ -26,3 +27,9 @@ Solution
 3. Open 	config.inc 
     $username = "admin"; 
     $password = "f0rkblork"; 
+	
+	
+4 open WebDevloper from FireFox  menu chose inspector	
+  make both windows  visable .
+  Find the from in the by moving the mouse in inspectr. Click on it
+ in the from tag change the first name to  Jane  and run it
