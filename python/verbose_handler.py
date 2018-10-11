@@ -30,4 +30,4 @@ class VerboseHTTPConnection(httplib.HTTPConnection):
 
 class VerboseHTTPHandler(urllib2.HTTPHandler):
   def http_open(self, req):
-    return self.do_open(VerboseHTTPConnection, req)
+   return self.do_open(VerboseHTTPConnection, req)
