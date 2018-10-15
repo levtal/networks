@@ -8,12 +8,36 @@
 #     <input type="submit" name="submit" value="Login">
 # </form>
 
+'''
+The HEAD Method
+It’s possible that you might want your program to check a series of links for validity or whether they have
+moved, but you do not want to incur the expense of actually downloading the body that would follow the
+HTTP headers. In this case, you can issue a HEAD request. This is directly possible through httplib, but it
+can also be performed by urllib2 if you are willing to write a small request class of your own:
+'''
+
+
+class HeadRequest(urllib2.Request):
+ def get_method(self):
+    return 'HEAD'
+
+
+
+
+
 
 
 
 from verbose_handler import VerboseHTTPHandler
 # using the 'verbose_handler.py' to prints requests and responses.
 import urllib, urllib2
+
+
+info = urllib2.urlopen(HeadRequest('http://www.google.com/'))
+header = info.read()
+print (header)
+
+
 opener = urllib2.build_opener(VerboseHTTPHandler)
 url = 'http://forecast.weather.gov/zipcity.php'
 form = urllib.urlencode({'inputstring': 'New York, NY'})#  form values
